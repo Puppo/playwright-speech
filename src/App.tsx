@@ -8,7 +8,6 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import ProtectedRoute from './Routes/Route';
 
-
 function App() {
   return (
     <ContextProviders>

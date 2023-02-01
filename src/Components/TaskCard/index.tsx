@@ -7,8 +7,6 @@ import Edit from "../../Img/edit.svg";
 import Erase from "../../Img/erase.svg";
 import * as S from "./styles";
 
-
-
 interface TaskCardProps {
     id: number;
     name: string;

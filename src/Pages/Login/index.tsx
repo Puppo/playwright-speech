@@ -1,28 +1,23 @@
-import React, {useState, useContext} from "react";
-import * as S from "./styles";
-import Logo from "../../Img/Logo.png";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthContext, {AuthType} from "../../Contexts/authContext";
+import AuthContext, { AuthType } from "../../Contexts/authContext";
+import Logo from "../../Img/Logo.png";
+import * as S from "./styles";
 
+const Login: React.FC = () => {
+    const { setUserData } = useContext(AuthContext) as AuthType;
+    const [email, setEmail] = useState("");
 
-const Login: React.FC = ()=>{
-    const {setUserData} = useContext(AuthContext) as AuthType;
-    const [email, setEmail] =  useState("");
-
-    function handleLogin(){
+    function handleLogin() {
         localStorage.setItem('@Project:email', email);
-        setUserData({email})
-
-
+        setUserData({ email })
     }
 
-    
-
-    function handleEmail(event: React.ChangeEvent<HTMLInputElement>){
+    function handleEmail(event: React.ChangeEvent<HTMLInputElement>) {
         setEmail(event.target.value)
     }
 
-    return(    
+    return (
         <S.Page>
             <S.LeftSide>
                 <S.Img src={Logo}></S.Img>
@@ -34,7 +29,7 @@ const Login: React.FC = ()=>{
                 <S.InputField value={email} id="email" onChange={handleEmail} placeholder="Insert your email"></S.InputField>
                 <S.FieldName>Password</S.FieldName>
                 <S.InputField placeholder="Insert your password" type="password"></S.InputField>
-                <S.KeepSigned><S.Checkbox/><S.Subtitle>Remember me</S.Subtitle></S.KeepSigned>
+                <S.KeepSigned><S.Checkbox /><S.Subtitle>Remember me</S.Subtitle></S.KeepSigned>
                 <Link to="/">
                     <S.SignIn onClick={handleLogin}>Sign In</S.SignIn>
                 </Link>

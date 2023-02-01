@@ -1,31 +1,27 @@
-import React from "react";
-import * as S from "./styles";
-import { DeleteType } from "../../Contexts/deleteType";
+import React, { useContext } from "react";
 import { DeleteContext } from "../../Contexts/deleteContext";
-import { useContext } from "react";
+import { DeleteType } from "../../Contexts/deleteType";
 import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskListType } from "../../Contexts/taskType";
+import * as S from "./styles";
 
+const DeleteModal: React.FC = () => {
+    const { setShowDelete, id, setId } = useContext(DeleteContext) as DeleteType;
+    const { deleteTask } = useContext(TaskListContext) as TaskListType;
 
-
-
-const DeleteModal:React.FC =()=>{
-    const { setShowDelete, id, setId }= useContext(DeleteContext) as DeleteType;
-    const{deleteTask} = useContext(TaskListContext) as TaskListType;
-
-    function handleCancel(){
+    function handleCancel() {
         setShowDelete(false);
     };
 
-    function handleConfirm(){
+    function handleConfirm() {
         deleteTask(id);
         setId(0);
         setShowDelete(false);
-        
+
     }
 
 
-    return(
+    return (
         <S.Background>
             <S.Container>
                 <S.Text>Are you sure you want to delete this task?</S.Text>

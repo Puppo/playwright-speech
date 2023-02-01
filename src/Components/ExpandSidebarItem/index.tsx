@@ -12,8 +12,6 @@ interface SidebarItemProps {
 
 }
 
-
-
 const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
     const [active, setActive] = useState(false);
     const { categoryList } = useContext(CategoriesContext) as CategoriesContextType;
